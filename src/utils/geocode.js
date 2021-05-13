@@ -27,7 +27,7 @@ const geocode = (address,callback) => {
 //         console.log(error);
 //         console.log(data);
 //     })
-// });
+// })
 
 
 
