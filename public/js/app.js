@@ -16,8 +16,8 @@ weatherForm.addEventListener('submit', (e) => {
                 if(data.error){
                     message1.textContent = data.error;
                 }else{
-                    message1.textContent = data.forecast;
-                    message2.textContent = data.address;
+                    message1.textContent = 'The current temperature in ' +  data.location + ' is ' + data.forecast + '. It feels like ' + data.feelslike + '.';
+                    message2.textContent = 'The humdity is ' + data.humidity;
                 }
             });
         });

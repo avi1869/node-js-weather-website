@@ -36,7 +36,7 @@ app.get('/about', (req, res) => {
 });
 
 app.get('/help', (req, res) => {
-    res.render('about',{
+    res.render('help',{
         title: 'Help regarding the app',
         name:'avinash'
     });
@@ -57,24 +57,22 @@ app.get('/weather',(req,res) => {
            message: "address required"
         })
     }
-    console.log('weather here')
     geocode(address,(error,{latitude,longitude}={}) => {
-        console.log('gecdoe',error)
         if(error){
-           console.log('error caught in gecode returned error');
             return res.send({error})
        } 
-
-        forecast(latitude,longitude,(error,data) => {
+        forecast(latitude,longitude,(error,data = {}) => {
             if(error){
                 return res.send({error})
             }
-
             return res.send({
-                forecast : data,
-                address: address
-
+                
+                forecast  : data.current.temperature,
+                 location  : data.location.name,
+                 feelslike : data.current.feelslike,
+                 humidity  : data.current.humidity
             })
+            
         })
     })    
 })
